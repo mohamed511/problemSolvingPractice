@@ -1,6 +1,6 @@
 package com.ant.problemSolvingPractice.algoExpert.linkedList;
 
-public final class RemoveDuplicationFromLinkedList {
+public class RemoveDuplicationFromLinkedList {
     public static class LinkedList {
         public int value;
         public LinkedList next;
