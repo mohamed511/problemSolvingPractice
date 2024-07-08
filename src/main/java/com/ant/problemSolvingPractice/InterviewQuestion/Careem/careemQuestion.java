@@ -9,6 +9,25 @@ public class careemQuestion {
         String s1 = "abc";
         String s2 = "xyzcabtvu";
         System.out.println(checkString(s1, s2));
+
+        // my apporach
+//        String s1 = "abc";
+//        String s2 = "fghbacdfgkkopox";
+        int count = 0;
+        String s3 = "";
+        System.out.println("s2 length -> " + s2.length());
+        System.out.println("s1 length -> " + s1.length());
+        for (int i = 0; i <= s2.length() - 1; i += s1.length()) {
+            System.out.println("i -> " + i);
+            s3 = s2.substring(i, i + 3);
+            System.out.println("s3 -> " + s3);
+            for (int j = 0; j < s3.length(); j++) {
+                if (s1.contains(Character.toString(s3.charAt(j)))) {
+                    count++;
+                }
+            }
+        }
+        System.out.println("count -> " + count);
     }
 
     public static boolean checkString(String s1, String s2) {
