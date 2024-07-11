@@ -6,28 +6,41 @@ import java.util.Map;
 public class careemQuestion {
     // given input of 2 string s1 and s2 verify if s2 contains permutation of characters of s1
     public static void main(String[] args) {
-        String s1 = "abc";
-        String s2 = "xyzcabtvu";
-        System.out.println(checkString(s1, s2));
+//        String s1 = "abc";
+//        String s2 = "xyzcabtvu";
+        //System.out.println(checkString(s1, s2));
 
         // my apporach
-//        String s1 = "abc";
-//        String s2 = "fghbacdfgkkopox";
-        int count = 0;
-        String s3 = "";
+        String s1 = "abc";
+        //String s2 = "fghbacdfgkkopox";
+        String s2 = "fghdfgkkopobacx";
+        int count;
+        StringBuilder s3;
         System.out.println("s2 length -> " + s2.length());
         System.out.println("s1 length -> " + s1.length());
-        for (int i = 0; i <= s2.length() - 1; i += s1.length()) {
+        int i;
+        for (i = 0; i <= s2.length() - 1; ) {
             System.out.println("i -> " + i);
-            s3 = s2.substring(i, i + 3);
+            s3 = new StringBuilder(s2.substring(i, i + 3));
             System.out.println("s3 -> " + s3);
+            count = 0;
             for (int j = 0; j < s3.length(); j++) {
                 if (s1.contains(Character.toString(s3.charAt(j)))) {
                     count++;
                 }
+                if (count == s3.length()) {
+                    System.out.println("count -> " + count);
+                    System.out.println("result -> " + (count == s1.length()));
+                    return;
+                }
+            }
+            if (s1.contains(Character.toString(s3.charAt(s3.length() - 1)))) {
+                i++;
+            } else {
+                i += s1.length();
             }
         }
-        System.out.println("count -> " + count);
+
     }
 
     public static boolean checkString(String s1, String s2) {
