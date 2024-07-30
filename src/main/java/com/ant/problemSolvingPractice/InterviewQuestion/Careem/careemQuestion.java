@@ -11,9 +11,19 @@ public class careemQuestion {
         //System.out.println(checkString(s1, s2));
 
         // my apporach
-        String s1 = "abc";
+//        String s1 = "abc";
         //String s2 = "fghbacdfgkkopox";
-        String s2 = "fghdfgkkopobacx";
+//        String s2 = "fghdfgkkopobacx";
+//        String s1= "ab";
+//        String s2 = "eidbaooo";
+        String s1 = "ab";
+        String s2 = "eidboaoo";
+        checkInclusion(s1,s2);
+
+
+    }
+
+    public static boolean checkInclusion(String s1, String s2) {
         int count;
         StringBuilder s3;
         System.out.println("s2 length -> " + s2.length());
@@ -21,7 +31,7 @@ public class careemQuestion {
         int i;
         for (i = 0; i <= s2.length() - 1; ) {
             System.out.println("i -> " + i);
-            s3 = new StringBuilder(s2.substring(i, i + 3));
+            s3 = new StringBuilder(s2.substring(i, i + s1.length()));
             System.out.println("s3 -> " + s3);
             count = 0;
             for (int j = 0; j < s3.length(); j++) {
@@ -31,7 +41,7 @@ public class careemQuestion {
                 if (count == s3.length()) {
                     System.out.println("count -> " + count);
                     System.out.println("result -> " + (count == s1.length()));
-                    return;
+                    return true;
                 }
             }
             if (s1.contains(Character.toString(s3.charAt(s3.length() - 1)))) {
@@ -40,7 +50,7 @@ public class careemQuestion {
                 i += s1.length();
             }
         }
-
+        return false;
     }
 
     public static boolean checkString(String s1, String s2) {
