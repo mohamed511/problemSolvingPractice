@@ -32,8 +32,8 @@ public class ArrayIntSlideWindow {
     }
 
     public static long maximumSubArraySumOptimized(int[] nums, int k) {
-        int maxSum = 0;
-        int currentSum = 0;
+        long maxSum = 0;
+        long currentSum = 0;
         Map<Integer, Integer> elementCount = new HashMap<>();
 
         // Initialize the first window
@@ -50,16 +50,16 @@ public class ArrayIntSlideWindow {
         // Slide the window
         for (int i = k; i < nums.length; i++) {
             // Remove the element going out of the window
-            int removedElement = nums[i - k];
-            currentSum -= removedElement;
-            elementCount.put(removedElement, elementCount.get(removedElement) - 1);
-            if (elementCount.get(removedElement) == 0) {
-                elementCount.remove(removedElement);
+            int outElement = nums[i - k];
+            currentSum -= outElement;
+            elementCount.put(outElement, elementCount.get(outElement) - 1);
+            if (elementCount.get(outElement) == 0) {
+                elementCount.remove(outElement);
             }
             // Add the new element
-            int addElement = nums[i];
-            currentSum += addElement;
-            elementCount.put(addElement, elementCount.getOrDefault(addElement, 0) + 1);
+            int inElement = nums[i];
+            currentSum += inElement;
+            elementCount.put(inElement, elementCount.getOrDefault(inElement, 0) + 1);
 
             // Check if the current window has all distinct elements
             if (elementCount.size() == k) {
