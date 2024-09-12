@@ -45,6 +45,7 @@ public class GenerateDocument {
             if (!charactersFreq.containsKey(currentChar) || charactersFreq.get(currentChar) == 0){
                 return false;
             }
+            charactersFreq.put(characters.charAt(i), charactersFreq.get(characters.charAt(i)) - 1);
         }
 
         return true;
