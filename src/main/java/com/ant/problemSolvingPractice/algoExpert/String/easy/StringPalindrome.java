@@ -1,4 +1,4 @@
-package com.ant.problemSolvingPractice.algoExpert.String;
+package com.ant.problemSolvingPractice.algoExpert.String.easy;
 
 public class StringPalindrome {
     public static void main(String[] args) {

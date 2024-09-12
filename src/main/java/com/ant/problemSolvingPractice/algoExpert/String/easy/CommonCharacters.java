@@ -1,4 +1,4 @@
-package com.ant.problemSolvingPractice.algoExpert.String;
+package com.ant.problemSolvingPractice.algoExpert.String.easy;
 
 import java.util.*;
 
