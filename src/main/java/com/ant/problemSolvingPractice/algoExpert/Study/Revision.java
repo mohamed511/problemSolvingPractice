@@ -1,61 +1,45 @@
 package com.ant.problemSolvingPractice.algoExpert.Study;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Revision {
     public static void main(String[] args) {
-        var array = Arrays.asList(5, 1, 22, 25, 6, -1, 8, 10);
-        var sequence = Arrays.asList(1, 6, -1, 10);
-        System.out.println(solution1(array, sequence));
-        System.out.println(solution2(array, sequence));
-        System.out.println(solution3(array, sequence));
-        var array1 = Arrays.asList(5, 1, 22, 25, 6, -1, 8, 10);
-        var sequence1 = Arrays.asList(5, 1, 22, 25, 6, -1, 8, 10);
-        System.out.println(solution1(array1, sequence1));
-        System.out.println(solution2(array1, sequence1));
-        System.out.println(solution3(array1, sequence1));
-        var array2 = Arrays.asList(5, 1, 22, 25, 6, -1, 8, 10);
-        var sequence2 = Arrays.asList(1, 6, -1, 5);
-        System.out.println(solution1(array2, sequence2));
-        System.out.println(solution2(array2, sequence2));
-        System.out.println(solution3(array2, sequence2));
+        int[] num = {1, 5, 4, 2, 9, 9, 9};
+        int k = 3;
+        System.out.println(maximumSubarraySum(num, k));
     }
 
-    public static boolean solution1(List<Integer> array, List<Integer> sequence) {
-        int arrIndex = 0;
-        int seqIndex = 0;
-        while (seqIndex < sequence.size() && arrIndex < array.size()) {
-            if (sequence.get(seqIndex).equals(array.get(arrIndex))) {
-                seqIndex++;
-            }
-            arrIndex++;
+    public static long maximumSubarraySum(int[] nums, int k) {
+        long maxSum = 0;
+        long currentSum = 0;
+        Map<Integer, Integer> elementsCount = new HashMap<>();
+        // get first 3 elements
+        for (int i = 0; i < k; i++) {
+            elementsCount.put(nums[i], elementsCount.getOrDefault(nums[i], 0) + 1);
+            currentSum += nums[i];
         }
-        return sequence.size() == seqIndex;
-    }
 
-    public static boolean solution2(List<Integer> array, List<Integer> sequence) {
-        int seqIndex = 0;
-        for (int i = 0; i < array.size(); i++) {
-            if (seqIndex == sequence.size()) {
-                break;
-            }
-            if (sequence.get(seqIndex).equals(array.get(i))) {
-                seqIndex++;
-            }
+        if (elementsCount.size() == k) {
+            maxSum = currentSum;
         }
-        return seqIndex == sequence.size();
-    }
 
-    public static boolean solution3(List<Integer> array, List<Integer> sequence) {
-        if (sequence.isEmpty()) {
-            return true;
+        for (int i = k; i < nums.length; i++) {
+            // remove element
+            int removeElement = nums[i - k];
+            currentSum -= removeElement;
+            elementsCount.put(removeElement, elementsCount.get(removeElement) - 1);
+            if (elementsCount.get(removeElement) == 0) {
+                elementsCount.remove(removeElement);
+            }
+            int addElement = nums[i];
+            currentSum += addElement;
+            elementsCount.put(addElement, elementsCount.getOrDefault(addElement, 0) + 1);
+
+            if (elementsCount.size() == k) {
+                maxSum = Math.max(maxSum, currentSum);
+            }
         }
-        if (array.contains(sequence.get(0))) {
-            return solution3(array.subList(array.indexOf(sequence.get(0)) + 1, array.size()), sequence.subList(1, sequence.size()));
-        }
-        return false;
+
+        return maxSum;
     }
 }
