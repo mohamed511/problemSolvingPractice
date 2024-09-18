@@ -1,6 +1,6 @@
 package com.ant.datastrucutreandalog.metwally.dataStrucutre.stackImpl.dependOnList;
 
-import com.ant.data.structure.metwally.dataStrucutre.linked.LinkedList;
+import com.ant.datastrucutreandalog.metwally.dataStrucutre.linked.LinkedList;
 
 public class MyStack {
     private LinkedList dataList;

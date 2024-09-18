@@ -1,6 +1,6 @@
 package com.ant.datastrucutreandalog.metwally.dataStrucutre.hashTable;
 
-import com.ant.data.structure.metwally.dataStrucutre.keyValuePairWithDictionary.KeyValuePairTest;
+import com.ant.datastrucutreandalog.metwally.dataStrucutre.keyValuePairWithDictionary.KeyValuePairTest;
 
 public class MyHashTable<TKey, TValue> {
     KeyValuePairTest<TKey, TValue>[] entries;

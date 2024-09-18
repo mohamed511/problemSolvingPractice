@@ -1,6 +1,6 @@
 package com.ant.datastrucutreandalog.metwally.dataStrucutre.myqueueImpl.queueDependOnLink;
 
-import com.ant.data.structure.metwally.dataStrucutre.linked.LinkedList;
+import com.ant.datastrucutreandalog.metwally.dataStrucutre.linked.LinkedList;
 
 public class MyQueue {
     private LinkedList dataList;
