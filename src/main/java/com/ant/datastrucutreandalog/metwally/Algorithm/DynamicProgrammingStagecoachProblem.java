@@ -44,17 +44,18 @@ public class DynamicProgrammingStagecoachProblem {
         System.out.println(Arrays.toString(states));
         int i = 0;
         int j = 0;
-        String[] path = new String[length];
-        path[0] = "A";
+        //String[] path = new String[length];
+        List<String> path = new ArrayList<>();
+        path.add("A");
         while (i < states.length) {
-            if (states[i].from.equalsIgnoreCase(path[j])) {
-                path[j + 1] = states[i].to;
+            if (states[i].from.equalsIgnoreCase(path.get(j))) {
+                path.add(states[i].to);
                 j++;
             }
             i++;
         }
         System.out.println(states[0].cost);
-        System.out.println(Arrays.toString(path));
+        System.out.println(path);
     }
 
 
