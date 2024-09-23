@@ -42,6 +42,7 @@ public class DynamicProgrammingStagecoachProblem {
         }
 
         System.out.println(Arrays.toString(states));
+        // get the best full path from a to j
         int i = 0;
         int j = 0;
         //String[] path = new String[length];
