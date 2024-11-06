@@ -9,7 +9,7 @@ public class DynamicProgrammingLongestCommonSubsequence {
         String text1 = "HELLOWORLD";
         String text2 = "OHELOD";
         longestCommonSubsequence(text1, text2);
-        System.out.println(lcsGPT(text1, text2));
+        System.out.println(lcsChatGPT(text1, text2));
     }
 
     private static void longestCommonSubsequence(String text1, String text2) {
@@ -72,7 +72,7 @@ public class DynamicProgrammingLongestCommonSubsequence {
         System.out.println(str);
     }
 
-    public static int lcsGPT(String str1, String str2) {
+    public static int lcsChatGPT(String str1, String str2) {
         int m = str1.length();
         int n = str2.length();
 
