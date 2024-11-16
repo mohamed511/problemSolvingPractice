@@ -12,20 +12,20 @@ public class DynamicProgrammingKnapsack0Or1 {
         ItemDynamic item3 = new ItemDynamic("#3", 5, 12);
         ItemDynamic item4 = new ItemDynamic("#4", 4, 11);
         List<ItemDynamic> items = new ArrayList<>(List.of(item1, item2, item3, item4));
-        knapsack(items);
+        knapsack(items,MAX_WEIGHT);
     }
 
-    public static void knapsack(List<ItemDynamic> items) {
+    public static void knapsack(List<ItemDynamic> items,int maxWeight) {
         // Add a dummy item to the beginning of the list to simplify the dynamic
         // programming algorithm
         items.add(0, new ItemDynamic("#0", 0, 0));
         // Initialize the dynamic array
-        int[][] dp = new int[items.size()][MAX_WEIGHT + 1];
+        int[][] dp = new int[items.size()][maxWeight + 1];
 
         // Compute the maximum profit that can be obtained for each item and weight
         // limit combination
         for (int i = 1; i < items.size(); i++) {
-            for (int j = 1; j <= MAX_WEIGHT; j++) {
+            for (int j = 1; j <= maxWeight; j++) {
                 ItemDynamic currentItem = items.get(i);
                 int topCell = dp[i - 1][j];
                 if (currentItem.getWeight() <= j) {
@@ -38,13 +38,13 @@ public class DynamicProgrammingKnapsack0Or1 {
             }
         }
         print(dp);
-        System.out.println("==> Max Profit: " + dp[items.size() - 1][MAX_WEIGHT]);
+        System.out.println("==> Max Profit: " + dp[items.size() - 1][maxWeight]);
 
         // Backtrack through the dynamic programming table to determine the solution
         List<String> solution = new ArrayList<>();
         int i = items.size() - 1;
-        int j = MAX_WEIGHT;
-        int remain = MAX_WEIGHT;
+        int j = maxWeight;
+        int remain = maxWeight;
         while (j > 0 && remain >= 0) {
             int currentCell = dp[i][j];
             int topCell = dp[i - 1][j];
