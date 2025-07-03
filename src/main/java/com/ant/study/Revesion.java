@@ -4,40 +4,43 @@ import java.util.*;
 
 public class Revesion {
     public static void main(String[] args) {
-        int[] num = {1, 5, 4, 2, 9, 9, 9};
-        int k = 3;
-        System.out.println(maximumSubArraySumOptimized(num, k));
+        char[] labels = {'1', '2', '3', '4', '5', '6'};
+        double[][] graph = {
+                {0, 6.7, 5.2, 2.8, 5.6, 3.6},
+                {6.7, 0, 5.7, 7.3, 5.1, 3.2},
+                {5.2, 5.7, 0, 3.4, 8.5, 4.0},
+                {2.8, 7.3, 3.4, 0, 8, 4.4},
+                {5.6, 5.1, 8.5, 8, 0, 4.6},
+                {3.6, 3.2, 4, 4.4, 4.6, 0}
+        };
+        System.out.println("Minimum Spanning Tree using Prim's Algorithm:");
+        primMinimumSpanningTree_study(graph, labels);
     }
 
-    public static long maximumSubArraySumOptimized(int[] nums, int k) {
-        long maxSum = 0;
-        long currentSum = 0;
-        Map<Integer, Integer> elementCount = new HashMap<>();
-        for (int i = 0; i < k; i++) {
-            currentSum += nums[i];
-            elementCount.put(nums[i], elementCount.getOrDefault(nums[i], 0) + 1);
-        }
-
-        if (elementCount.size() == k) {
-            maxSum = currentSum;
-        }
-
-        for (int i = k; i < nums.length; i++) {
-            int removedElement = nums[i - k];
-            currentSum -= removedElement;
-            elementCount.put(removedElement, elementCount.get(removedElement) - 1);
-            if (elementCount.get(removedElement) == 0) {
-                elementCount.remove(removedElement);
+    private static void primMinimumSpanningTree_study(double[][] graph, char[] labels) {
+        int v = graph.length;
+        int selectedEdgesCount = 0;
+        boolean selectedNodes[] = new boolean[v];
+        selectedNodes[0] = true;
+        while (selectedEdgesCount < v - 1) {
+            double min = Double.MAX_VALUE;
+            int from = -1;
+            int to = -1;
+            for (int i = 0; i < v; i++) {
+                if (selectedNodes[i]) {
+                    for (int j = 0; j < v; j++) {
+                        if (!selectedNodes[j] && graph[i][j] > 0 && graph[i][j] < min) {
+                            min = graph[i][j];
+                            from = i;
+                            to = j;
+                        }
+                    }
+                }
             }
-            // add new element
-            int newItem = nums[i];
-            currentSum += newItem;
-            elementCount.put(newItem, elementCount.getOrDefault(newItem, 0) + 1);
-            if (elementCount.size() == k) {
-                maxSum = Math.max(maxSum, currentSum);
-            }
+            selectedEdgesCount++;
+            selectedNodes[to] = true;
+            System.out.println("Edge " + selectedEdgesCount + ": " + labels[from] + " - " + labels[to] + " (Weight: " + min + ")");
         }
 
-        return maxSum;
     }
 }
