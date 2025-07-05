@@ -47,5 +47,6 @@ public class GraphPrimMinimumSpanningTree {
     }
 
     private static void primMinimumSpanningTree_study(double[][] graph, char[] labels) {
+       
     }
 }
