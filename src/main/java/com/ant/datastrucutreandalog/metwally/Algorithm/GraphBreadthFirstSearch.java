@@ -72,7 +72,7 @@ public class GraphBreadthFirstSearch {
      * second solution
      */
 
-    static class Graph {
+    private static class Graph {
         public Vertex[] vertices;
         public int lastIndex = 0;
 
@@ -117,7 +117,7 @@ public class GraphBreadthFirstSearch {
         }
     }
 
-    static class Vertex {
+    private static class Vertex {
         public String label;
         public boolean visited;
         public Edge[] edges;
@@ -128,7 +128,7 @@ public class GraphBreadthFirstSearch {
         }
     }
 
-    static class Edge {
+    private static class Edge {
         public Vertex source;
         public Vertex target;
         public double weight;
