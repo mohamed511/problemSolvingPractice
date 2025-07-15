@@ -6,7 +6,7 @@ import java.util.List;
 public class GraphDepthFirstSearch {
     public static void main(String[] args) {
         List<String> nodes = List.of("A", "B", "C", "D", "E", "F", "G", "H", "I");
-        GraphDepthFirstSearch.Graph g = new GraphDepthFirstSearch.Graph(nodes);
+        Graph g = new Graph(nodes);
 
         g.addEdges(0, List.of(1, 2));
         g.addEdges(1, List.of(0, 3, 4));
