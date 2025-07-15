@@ -47,6 +47,29 @@ public class GraphPrimMinimumSpanningTree {
     }
 
     private static void primMinimumSpanningTree_study(double[][] graph, char[] labels) {
-       
+        int v = graph.length;
+        int edgesCount = 0;
+        boolean selected[] = new boolean[v];
+        selected[0] = true;
+        while (edgesCount < v - 1){
+            double tempMin = Double.MAX_VALUE;
+            int tempFrom = -1;
+            int tempTo = -1;
+            for (int i = 0; i < v; i++) {
+                if (selected[i]){
+                    for (int j = 0; j < v; j++) {
+                        if (graph[i][j]>0&&!selected[j]&&graph[i][j]<tempMin){
+                            tempMin = graph[i][j];
+                            tempFrom = i;
+                            tempTo = j;
+                        }
+                    }
+                }
+
+            }
+            selected[tempTo] = true;
+            edgesCount++;
+            System.out.printf("Edge %d: %c - %c (Weight: %.2f)%n", edgesCount, labels[tempFrom], labels[tempTo], tempMin);
+        }
     }
 }
