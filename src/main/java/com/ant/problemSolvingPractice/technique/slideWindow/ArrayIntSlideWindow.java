@@ -7,6 +7,15 @@ public class ArrayIntSlideWindow {
         int[] num = {1, 5, 4, 2, 9, 9, 9};
         int k = 3;
         System.out.println(maximumSubArraySumOptimized(num, k));
+
+        int[] num2 = {1, 2, 1, 1, 3};
+        int k2 = 3;
+        System.out.println(maximumSubArraySumOptimized(num2, k2));
+
+        int[] num3 = {4,4,4};
+        int k3 = 3;
+        System.out.println(maximumSubArraySumOptimized(num3, k3));
+
     }
 
     public static long maximumSubArraySum(int[] nums, int k) {
