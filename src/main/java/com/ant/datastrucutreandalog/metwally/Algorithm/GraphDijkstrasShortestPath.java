@@ -64,7 +64,7 @@ public class GraphDijkstrasShortestPath {
                     double newLength = currentVertex.totalLength + currentEdge.weight;
                     if (newLength < currentEdge.target.totalLength) {
                         currentEdge.target.totalLength = newLength;
-                        currentEdge.target.soueceOfTotalLength = currentVertex;
+                        currentEdge.target.sourceOfTotalLength = currentVertex;
                     }
                 }
             }
@@ -73,10 +73,10 @@ public class GraphDijkstrasShortestPath {
             StringBuilder fullPath = new StringBuilder(this.vertices[this.vertices.length - 1].label);
 
             Vertex lastOne = this.vertices[this.vertices.length - 1];
-            while (lastOne.soueceOfTotalLength != null) {
+            while (lastOne.sourceOfTotalLength != null) {
 //                fullPath.append(lastOne.soueceOfTotalLength.label).append(" -> ");
-                fullPath.insert(0, lastOne.soueceOfTotalLength.label + " -> ");
-                lastOne = lastOne.soueceOfTotalLength;
+                fullPath.insert(0, lastOne.sourceOfTotalLength.label + " -> ");
+                lastOne = lastOne.sourceOfTotalLength;
             }
 
 
@@ -89,7 +89,7 @@ public class GraphDijkstrasShortestPath {
             for (Vertex vertex : vertices) {
                 vertex.visited = false;
                 vertex.totalLength = 0;
-                vertex.soueceOfTotalLength = null;
+                vertex.sourceOfTotalLength = null;
             }
         }
     }
@@ -98,7 +98,7 @@ public class GraphDijkstrasShortestPath {
         public String label;
         public boolean visited;
         public double totalLength;
-        public Vertex soueceOfTotalLength;
+        public Vertex sourceOfTotalLength;
         public Edge[] edges;
 
         public Vertex(String label, boolean visited) {
