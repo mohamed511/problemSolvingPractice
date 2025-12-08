@@ -1,5 +1,15 @@
 package com.ant.datastrucutreandalog.metwally.Algorithm;
 
+
+/**
+ * ===> result
+ * Edge 1: 1 - 4 (Weight: 2.80)
+ * Edge 2: 4 - 3 (Weight: 3.40)
+ * Edge 3: 1 - 6 (Weight: 3.60)
+ * Edge 4: 6 - 2 (Weight: 3.20)
+ * Edge 5: 6 - 5 (Weight: 4.60)
+
+ * */
 public class GraphPrimMinimumSpanningTree {
     public static void main(String[] args) {
         char[] labels = {'1', '2', '3', '4', '5', '6'};
